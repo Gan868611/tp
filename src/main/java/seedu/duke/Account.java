@@ -14,7 +14,7 @@ public class Account {
     }
 
     public float getBalance () {
-        return balance / 100.0f;
+        return balance / 100.00f;
     }
 
     public Currency getCurrencyType () {
@@ -32,7 +32,7 @@ public class Account {
             InvalidUpdateBalanceActionException, TooLargeAmountException {
         long newBalance;
         if (action.equals("add")) {
-            newBalance = balance + (long) (changeInBalance * 100);
+            newBalance = balance + (long) (changeInBalance * 100.00);
             long UPPER_BOUND = 1_000_000_000;
             if (newBalance > UPPER_BOUND) {
                 throw new TooLargeAmountException();
@@ -55,7 +55,6 @@ public class Account {
     @Override
     public String toString () {
         String currencyType = currencyToString(currency);
-        return currencyType + ": " + String.format("%.2f", balance / 100.0f);
+        return currencyType + ": " + String.format("%.2f", balance / 100.00);
     }
-
 }
